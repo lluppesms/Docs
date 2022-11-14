@@ -1,0 +1,52 @@
+# Copyright (c) Luppes Consulting, Inc.
+# Licensed under the MIT License.
+
+site_name: Lyle's Docs
+site_url: https://lluppesms.github.io/Docs
+site_description: Helpful docs from Lyle
+site_author: Lyle Luppes
+
+extra_css:
+- assets/stylesheets/extra.css
+
+theme:
+  language: en
+  name: readthedocs  # material  (missing)
+  font:
+    text: Roboto
+  palette:
+    primary: black
+    accent: blue
+  logo: assets/images/icon-144x144.png
+  favicon: assets/images/icon-64x64.png
+  icon:
+    repo: fontawesome/brands/github
+  features:
+  - navigation.instant
+  - navigation.indexes
+  - navigation.sections:
+      level: 1
+  - navigation.tabs
+  - content.code.annotate
+  - content.tabs.link
+
+nav:
+  - Home: index.md
+  - Useful Docs:
+    - Create Azure DevOps Service Connections: CreateServiceConnections.md
+    - Create Azure DevOps Environments: CreateDevOpsEnvironments.md
+    - Create Azure DevOps Variable Groups: CreateDevOpsVariableGroups.md
+    - Create Azure DevOps Pipeline(s): CreateNewPipeline.md
+    - Read App Insights Log Files: ReadAppInsightsLogFiles.md
+
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: '#'
+      separator: '-'
