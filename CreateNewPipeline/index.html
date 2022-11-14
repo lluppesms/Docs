@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Lyle Luppes" /><link rel="canonical" href="https://lluppesms.github.io/Docs/CreateNewPipeline/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Create Azure DevOps Pipeline(s) - Lyle's Docs</title>
+    <title>Create Azure DevOps Pipelines - Lyle's Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -13,7 +13,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Create Azure DevOps Pipeline(s)";
+        var mkdocs_page_name = "Create Azure DevOps Pipelines";
         var mkdocs_page_input_path = "CreateNewPipeline.md";
         var mkdocs_page_url = "/Docs/CreateNewPipeline/";
       </script>
@@ -54,11 +54,11 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../CreateDevOpsVariableGroups/">Create Azure DevOps Variable Groups</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Create Azure DevOps Pipeline(s)</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Create Azure DevOps Pipelines</a>
     <ul class="current">
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ReadAppInsightsLogFiles/">Read App Insights Log Files</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../ReadAppInsightsLogFiles/">Querying Logs in Application Insights</a>
                   </li>
               </ul>
       </div>
@@ -76,7 +76,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Useful Docs &raquo;</li>
-      <li>Create Azure DevOps Pipeline(s)</li>
+      <li>Create Azure DevOps Pipelines</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -85,11 +85,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="set-up-an-azure-devops-pipeline">Set up an Azure DevOps pipeline<a class="headerlink" href="#set-up-an-azure-devops-pipeline" title="Permanent link">#</a></h1>
+                <h1 id="create-azure-devops-pipelines">Create Azure DevOps Pipelines<a class="headerlink" href="#create-azure-devops-pipelines" title="Permanent link">#</a></h1>
 <p>To create an Azure DevOps pipeline from an existing YML file in a GitHub repository, follow these steps.</p>
-<p>This project has a "deploy-infra-and-code.yml" pipeline, which will deploy all of the Azure resources using Bicep, and then deploy the function app to those resources.</p>
-<p>This project also has a separate "deploy-infra-only.yml" and "deploy-code-only.yml" pipelines, which will let the author create two pipelines which separate those functions.</p>
-<p>Either set of pipelines will work properly.</p>
 <hr />
 <p><strong>Step 1:</strong> Click New pipeline from the Pipeline section of the Azure DevOps project</p>
 <p><img alt="Step 1" src="../assets/images/NewPipeline-1.jpg" /></p>
@@ -118,7 +115,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../CreateDevOpsVariableGroups/" class="btn btn-neutral float-left" title="Create Azure DevOps Variable Groups"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ReadAppInsightsLogFiles/" class="btn btn-neutral float-right" title="Read App Insights Log Files">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../ReadAppInsightsLogFiles/" class="btn btn-neutral float-right" title="Querying Logs in Application Insights">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

@@ -54,13 +54,11 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Create Azure DevOps Variable Groups</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#note-these-azure-devops-pipelines-needs-a-variable-group-durabledemo">Note: These Azure DevOps pipelines needs a variable group "DurableDemo"</a>
-    </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../CreateNewPipeline/">Create Azure DevOps Pipeline(s)</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../CreateNewPipeline/">Create Azure DevOps Pipelines</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ReadAppInsightsLogFiles/">Read App Insights Log Files</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../ReadAppInsightsLogFiles/">Querying Logs in Application Insights</a>
                   </li>
               </ul>
       </div>
@@ -87,19 +85,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="set-up-an-azure-devops-variable-groups">Set up an Azure DevOps Variable Groups<a class="headerlink" href="#set-up-an-azure-devops-variable-groups" title="Permanent link">#</a></h1>
-<h2 id="note-these-azure-devops-pipelines-needs-a-variable-group-durabledemo">Note: These Azure DevOps pipelines needs a variable group "DurableDemo"<a class="headerlink" href="#note-these-azure-devops-pipelines-needs-a-variable-group-durabledemo" title="Permanent link">#</a></h2>
-<p>To create these variable groups, customize and run this command in the Azure Cloud Shell, once for each environment:</p>
+                <h1 id="create-azure-devops-variable-groups">Create Azure DevOps Variable Groups<a class="headerlink" href="#create-azure-devops-variable-groups" title="Permanent link">#</a></h1>
+<p>To create variable groups to be used in Azure DevOps pipelines, customize and run this command in the Azure Cloud Shell, adding in the variables and values that you need for your project.</p>
 <pre><code class="language-bash">   az login
 
    az pipelines variable-group create 
      --organization=https://dev.azure.com/&lt;yourAzDOOrg&gt;/ 
      --project='&lt;yourAzDOProject&gt;' 
-     --name DurableFunctions-&lt;env&gt; 
+     --name &lt;yourVariableGroupName&gt;
      --variables 
-         orgPrefix='&lt;yourInitials&gt;' 
-         appPrefix='durabledemo' 
-         appSuffix=''
+         appName='yourAppName' 
          environmentCode='dev' 
          serviceConnectionName='&lt;yourServiceConnection&gt;' 
          azureSubscription='&lt;yourAzureSubscriptionName&gt;' 
@@ -107,23 +102,14 @@
          location='eastus' 
          bicepDirectory='.infrastructure/Bicep/' 
          bicepFileName='main.bicep'
-         storageSku='Standard_LRS' 
-         functionAppSku='Y1' 
-         functionAppSkuFamily='Y' 
-         functionAppSkuTier='Dynamic' 
-         runSecurityDevOpScan='false'
-         keyVaultOwnerUserId1='owner1SID'
-         keyVaultOwnerUserId2='owner1SID'
-         twilioAccountSid='&lt;twilioAccountSid&gt;'
-         twilioAuthToken='&lt;twilioAuthToken&gt;'
-         twilioPhoneNumber='&lt;twilioPhoneNumber&gt;'
+         yourVariableName='yourVariableValue'
 </code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../CreateDevOpsEnvironments/" class="btn btn-neutral float-left" title="Create Azure DevOps Environments"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../CreateNewPipeline/" class="btn btn-neutral float-right" title="Create Azure DevOps Pipeline(s)">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../CreateNewPipeline/" class="btn btn-neutral float-right" title="Create Azure DevOps Pipelines">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
