@@ -13,7 +13,7 @@
 #   FYI - To make that work with the gh-deploy command, you have to include
 #   a CNAME file in the docs folder, otherwise it removes the CNAME.
 
-site_name: Lyle's Docs
+site_name: Lyle's Reference Library
 site_url: https://lluppesms.github.io/Docs
 site_description: Helpful docs from Lyle
 site_author: Lyle Luppes
@@ -29,7 +29,7 @@ theme:
   palette:
     primary: black
     accent: blue
-  logo: assets/images/LyleIcon-64.png
+  logo: assets/images/LyleHeader.png
   favicon: assets/images/LyleIcon-64.png
   icon:
     repo: fontawesome/brands/github
