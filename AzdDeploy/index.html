@@ -111,6 +111,7 @@
               
                 <h1 id="azd-command-line-deploy">AZD Command Line Deploy<a class="headerlink" href="#azd-command-line-deploy" title="Permanent link">#</a></h1>
 <p>The Azure Developer CLI (azd) is an open-source tool that accelerates the time it takes to get started on Azure. azd provides a set of developer-friendly commands that map to key stages in a workflow (code, build, deploy, monitor).</p>
+<p>If a project is configured to use azd, then these commands and notes apply.  To learn how to make a project compatible with azd, see <a href="../AzdCompatibility/">Making Your Project 'azd' Compatible</a>.</p>
 <h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">#</a></h2>
 <p>The three commands of most interest are:</p>
 <ul>
@@ -120,28 +121,42 @@
 </ul>
 <p>Typically a developer with either do the up command to do everything at once, or do the provision and deploy commands separately.</p>
 <h2 id="environment-names">Environment Names<a class="headerlink" href="#environment-names" title="Permanent link">#</a></h2>
-<p>Note: When this command is run for the first time, a prompt will ask for the the "Environment Name", the Azure Subscription to use and the Azure Region to deploy to. Choose the "Environment Name" carefully, as it will be used as the basis to name all of the resources, so it must be unique.</p>
-<pre><code>Note: Personally, I like to use a format like &lt;myInitials&gt;-&lt;appName&gt; as the format for Environment Name.
-
-For example, if Environment Name is equal to:
-  lll-function-demo
-
-AZD will create a Azure resources with these names: 
-  Resource Group: rg-lll-function-demo
-  Azure Function: lll-function-demofunction
-  Plus similarly named storage accounts and other resources
+<p>When this command is run for the first time, a prompt will ask for the the "Environment Name", the Azure Subscription to use and the Azure Region to deploy to. Choose the "Environment Name" carefully, as it will be used as the basis to name all of the resources, so it must be unique.</p>
+<p>Note: Personally, I like to use a format like <myInitials>-<appName> as the format for Environment Name.</p>
+<p>In that case, if Environment Name is equal to:</p>
+<pre><code class="language-bash">lll-function-demo
 </code></pre>
+<p>AZD will create a Azure resources with these names:</p>
+<table>
+<thead>
+<tr>
+<th>Azure Resource</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resource Group</td>
+<td>rg-lll-function-demo</td>
+</tr>
+<tr>
+<td>Azure Function</td>
+<td>lll-function-demofunction</td>
+</tr>
+</tbody>
+</table>
+<p>Storage accounts and other resources will be named in a similarly fashion.</p>
 <h2 id="visual-studio-code">Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permanent link">#</a></h2>
 <p>There is a Azure Developer CLI extension available in Visual Studio Code. If that is installed, it is easy to pop up the command window like this:</p>
-<p><img alt="VSC Commands" src="/Docs/assets/images/AZD_Commands.png" /></p>
+<p><img alt="VSC Commands" src="../assets/images/AZD_Commands.png" /></p>
 <h2 id="command-line">Command Line<a class="headerlink" href="#command-line" title="Permanent link">#</a></h2>
 <p>These commands can also be run on the command line, like this:</p>
 <pre><code class="language-bash">&gt; azd up
 </code></pre>
 <h2 id="example-input">Example Input<a class="headerlink" href="#example-input" title="Permanent link">#</a></h2>
-<p><img alt="VSC Commands" src="/Docs/assets/images/AZD_Prompts.png" /></p>
+<p><img alt="VSC Commands" src="../assets/images/AZD_Prompts.png" /></p>
 <h2 id="example-output">Example Output<a class="headerlink" href="#example-output" title="Permanent link">#</a></h2>
-<p><img alt="VSC Commands" src="/Docs/assets/images/AZD_Result.png" /></p>
+<p><img alt="VSC Commands" src="../assets/images/AZD_Result.png" /></p>
 <hr />
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">#</a></h2>
 <p><a href="https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/">Azure Developer CLI Reference</a></p>
