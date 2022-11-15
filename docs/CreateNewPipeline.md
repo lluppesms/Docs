@@ -1,12 +1,6 @@
-# Set up an Azure DevOps pipeline
+# Create Azure DevOps Pipelines
 
 To create an Azure DevOps pipeline from an existing YML file in a GitHub repository, follow these steps.
-
-This project has a "deploy-infra-and-code.yml" pipeline, which will deploy all of the Azure resources using Bicep, and then deploy the function app to those resources.
-
-This project also has a separate "deploy-infra-only.yml" and "deploy-code-only.yml" pipelines, which will let the author create two pipelines which separate those functions.
-
-Either set of pipelines will work properly.
 
 ---
 

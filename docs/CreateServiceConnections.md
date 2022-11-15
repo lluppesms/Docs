@@ -1,4 +1,4 @@
-# Set up an Azure DevOps Service Connections
+# Create Azure DevOps Service Connections
 
 To enable Azure DevOps pipelines to run against a GitHub repository, both GitHub Service Connection and an Azure Subscription Service Connection need to be set up.
 
@@ -42,11 +42,11 @@ To enable Azure DevOps pipelines to run against a GitHub repository, both GitHub
 
 ![Step 8](assets/images/ServiceConnection-8.jpg)
 
-
 ---
+
 Now go create some pipelines!
 
 ---
-## References:
-For more information, see:  https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml
 
+## References:
+For more information, see: [https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml)

@@ -1,5 +1,13 @@
 # Copyright (c) Luppes Consulting, Inc.
 # Licensed under the MIT License.
+# To install mkdocs on Windows:
+#   python -m pip install mkdocs
+# To run locally: 
+#    python -m mkdocs serve
+#    See: https://www.mkdocs.org/getting-started/
+# To create a static docs site that will automatically be deployed:
+#    python -m mkdocs gh-deploy
+#    See: https://www.mkdocs.org/user-guide/deploying-your-docs/
 
 site_name: Lyle's Docs
 site_url: https://lluppesms.github.io/Docs
@@ -17,8 +25,8 @@ theme:
   palette:
     primary: black
     accent: blue
-  logo: assets/images/icon-144x144.png
-  favicon: assets/images/icon-64x64.png
+  logo: assets/images/LyleIcon-64.png
+  favicon: assets/images/LyleIcon-64.png
   icon:
     repo: fontawesome/brands/github
   features:
@@ -36,8 +44,8 @@ nav:
     - Create Azure DevOps Service Connections: CreateServiceConnections.md
     - Create Azure DevOps Environments: CreateDevOpsEnvironments.md
     - Create Azure DevOps Variable Groups: CreateDevOpsVariableGroups.md
-    - Create Azure DevOps Pipeline(s): CreateNewPipeline.md
-    - Read App Insights Log Files: ReadAppInsightsLogFiles.md
+    - Create Azure DevOps Pipelines: CreateNewPipeline.md
+    - Querying Logs in Application Insights: ReadAppInsightsLogFiles.md
 
 markdown_extensions:
   - admonition

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Lyle Luppes" /><link rel="canonical" href="https://lluppesms.github.io/Docs/ReadAppInsightsLogFiles/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Querying Logs in Application Insights - Lyle's Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../assets/stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Querying Logs in Application Insights";
+        var mkdocs_page_input_path = "ReadAppInsightsLogFiles.md";
+        var mkdocs_page_url = "/Docs/ReadAppInsightsLogFiles/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../assets/images/LyleIcon-64.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Useful Docs</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../CreateServiceConnections/">Create Azure DevOps Service Connections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../CreateDevOpsEnvironments/">Create Azure DevOps Environments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../CreateDevOpsVariableGroups/">Create Azure DevOps Variable Groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../CreateNewPipeline/">Create Azure DevOps Pipelines</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Querying Logs in Application Insights</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#view-log-entries-in-application-insights">View log entries in Application Insights</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#view-every-time-this-function-was-called-not-just-the-trace-info">View every time this function was called, not just the trace info</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Lyle's Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Useful Docs &raquo;</li>
+      <li>Querying Logs in Application Insights</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="querying-logs-in-application-insights">Querying Logs in Application Insights<a class="headerlink" href="#querying-logs-in-application-insights" title="Permanent link">#</a></h1>
+<p>Using the Application Insights service is a great way to log info about your application, but sometimes reading the logs can be a little difficult. The Kusto queries below show an example of how you can query the logs  generated by your application, which are stored in the Application Insights service and can be viewed in the Azure Portal.</p>
+<h2 id="view-log-entries-in-application-insights">View log entries in Application Insights<a class="headerlink" href="#view-log-entries-in-application-insights" title="Permanent link">#</a></h2>
+<pre><code class="language-sql">traces 
+| project timestamp, customDimensions[&quot;eventSource&quot;], message, customDimensions.LogLevel, severityLevel, customDimensions
+// | where customDimensions.eventSource startswith &quot;myEventSource&quot;
+| filter customDimensions[&quot;eventSource&quot;] != '' 
+and timestamp &gt;= ago(30m) // ago(1d) ago(8h) ago(15m) 
+| extend source = tostring(customDimensions[&quot;eventSource&quot;])
+| take 200
+| order by timestamp desc 
+</code></pre>
+<hr />
+<h2 id="view-every-time-this-function-was-called-not-just-the-trace-info">View every time this function was called, not just the trace info<a class="headerlink" href="#view-every-time-this-function-was-called-not-just-the-trace-info" title="Permanent link">#</a></h2>
+<pre><code class="language-sql">requests
+| project
+    timestamp,id,operation_Name,success,resultCode,duration,operation_Id,cloud_RoleName,invocationId=customDimensions['InvocationId']
+| where timestamp &gt; ago(1d)
+| where cloud_RoleName =~ 'myFunctionAppName' and operation_Name =~ 'myFunctionName'
+| order by timestamp desc
+| take 200
+</code></pre>
+<hr />
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<p>For more information about the Kusto Query Language, see: <a href="https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/">https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/</a></p>
+<p><a href="https://jonathancrozier.com/blog/learning-the-kusto-query-language-with-application-insights-logs">Learning the Kusto Query Language</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../CreateNewPipeline/" class="btn btn-neutral float-left" title="Create Azure DevOps Pipelines"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../CreateNewPipeline/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,8 +1,9 @@
-# Set up an Azure DevOps Environments
+# Create Azure DevOps Environments
 
 For multi-stage deployments (i.e. DEV/QA/PROD), a DevOps Environment should be set up for each stage that that is being published. On that Environment definition, the rules that are needed can set up, such as specific approvers that are needed to publish to that environment.
 
 ---
+
 ## Environment Setup
 
 **Step 1:** Go to the project environments page and select New environment:

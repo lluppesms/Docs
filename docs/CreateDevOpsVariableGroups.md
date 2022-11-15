@@ -1,8 +1,6 @@
-# Set up an Azure DevOps Variable Groups
+# Create Azure DevOps Variable Groups
 
-## Note: These Azure DevOps pipelines needs a variable group "DurableDemo"
-
-To create these variable groups, customize and run this command in the Azure Cloud Shell, once for each environment:
+To create variable groups to be used in Azure DevOps pipelines, customize and run this command in the Azure Cloud Shell, adding in the variables and values that you need for your project.
 
 ``` bash
    az login
@@ -10,11 +8,9 @@ To create these variable groups, customize and run this command in the Azure Clo
    az pipelines variable-group create 
      --organization=https://dev.azure.com/<yourAzDOOrg>/ 
      --project='<yourAzDOProject>' 
-     --name DurableFunctions-<env> 
+     --name <yourVariableGroupName>
      --variables 
-         orgPrefix='<yourInitials>' 
-         appPrefix='durabledemo' 
-         appSuffix=''
+         appName='yourAppName' 
          environmentCode='dev' 
          serviceConnectionName='<yourServiceConnection>' 
          azureSubscription='<yourAzureSubscriptionName>' 
@@ -22,14 +18,5 @@ To create these variable groups, customize and run this command in the Azure Clo
          location='eastus' 
          bicepDirectory='.infrastructure/Bicep/' 
          bicepFileName='main.bicep'
-         storageSku='Standard_LRS' 
-         functionAppSku='Y1' 
-         functionAppSkuFamily='Y' 
-         functionAppSkuTier='Dynamic' 
-         runSecurityDevOpScan='false'
-         keyVaultOwnerUserId1='owner1SID'
-         keyVaultOwnerUserId2='owner1SID'
-         twilioAccountSid='<twilioAccountSid>'
-         twilioAuthToken='<twilioAuthToken>'
-         twilioPhoneNumber='<twilioPhoneNumber>'
+         yourVariableName='yourVariableValue'
 ```
