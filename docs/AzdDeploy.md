@@ -4,7 +4,7 @@ The Azure Developer CLI (azd) is an open-source tool that accelerates the time i
 
 If a project is configured to use azd, then these commands and notes apply.  To learn how to make a project compatible with azd, see [Making Your Project 'azd' Compatible](AzdCompatibility.md).
 
---- 
+---
 
 ## Commands
 
@@ -16,7 +16,7 @@ The three commands of most interest are:
 
 Typically a developer with either do the up command to do everything at once, or do the provision and deploy commands separately.
 
---- 
+---
 
 ## Environment Names
 
@@ -39,7 +39,7 @@ AZD will create a Azure resources with these names:
 
 Storage accounts and other resources will be named in a similarly fashion.
 
---- 
+---
 
 ## Visual Studio Code
 
@@ -47,7 +47,7 @@ There is a Azure Developer CLI extension available in Visual Studio Code. If tha
 
 ![VSC Commands](assets/images/AZD_Commands.png)
 
---- 
+---
 
 ## Command Line
 
@@ -73,6 +73,4 @@ These commands can also be run on the command line, like this:
 
 [Introducing the Azure Developer CLI - Azure SDK Blog](https://devblogs.microsoft.com/azure-sdk/introducing-the-azure-developer-cli-a-faster-way-to-build-apps-for-the-cloud/)
 
-
 [Make your project compatible with Azure Developer CLI](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-create)
-

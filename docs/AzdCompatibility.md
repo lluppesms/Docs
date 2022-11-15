@@ -13,6 +13,7 @@ Converting a project to use the AZD commands is a matter following a few convent
 ## Key Files
 
 There are four key files that drive the AZD process:
+
 | Folder  | File                     | Description               |
 | ------- | ------------------------ | ------------------------- |
 | /       | azure.yaml               | Build Process Definition  |
