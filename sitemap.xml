@@ -2,32 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://lluppesms.github.io/Docs/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lluppesms.github.io/Docs/CreateDevOpsEnvironments/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lluppesms.github.io/Docs/CreateDevOpsVariableGroups/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lluppesms.github.io/Docs/CreateNewPipeline/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lluppesms.github.io/Docs/CreateServiceConnections/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://lluppesms.github.io/Docs/ReadAppInsightsLogFiles/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
