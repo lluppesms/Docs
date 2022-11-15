@@ -6,6 +6,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://lluppesms.github.io/Docs/AzdCompatibility/</loc>
+         <lastmod>2022-11-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://lluppesms.github.io/Docs/AzdDeploy/</loc>
          <lastmod>2022-11-15</lastmod>
          <changefreq>daily</changefreq>

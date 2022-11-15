@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Lyle Luppes" /><link rel="canonical" href="https://lluppesms.github.io/Docs/AzdCompatibility/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Making Your Project 'azd' Compatible - Lyle's Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../assets/stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Making Your Project \u0027azd\u0027 Compatible";
+        var mkdocs_page_input_path = "AzdCompatibility.md";
+        var mkdocs_page_url = "/Docs/AzdCompatibility/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../assets/images/LyleIcon-64.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Azure DevOps Setup</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../CreateServiceConnections/">Create Azure DevOps Service Connections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../CreateDevOpsEnvironments/">Create Azure DevOps Environments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../CreateDevOpsVariableGroups/">Create Azure DevOps Variable Groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../CreateNewPipeline/">Create Azure DevOps Pipelines</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Azure Developer Command (azd)</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../AzdDeploy/">Deploying with 'azd' (Azure Developer Command)</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Making Your Project 'azd' Compatible</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#folder-conventions">Folder Conventions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#key-files">Key Files</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#azureyaml">/azure.yaml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#githubworkflowsazure-devyml">.github/workflows/azure-dev.yml</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#inframainbicep">/infra/main.bicep</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#inframainparametersjson">/infra/main.parameters.json</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup-complete">Setup Complete</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Application Insights</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ReadAppInsightsLogFiles/">Querying Logs in Application Insights</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Lyle's Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Azure Developer Command (azd) &raquo;</li>
+      <li>Making Your Project 'azd' Compatible</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="converting-a-project-to-use-azd-command-line-deploy">Converting a Project to use AZD Command Line Deploy<a class="headerlink" href="#converting-a-project-to-use-azd-command-line-deploy" title="Permanent link">#</a></h1>
+<p>The Azure Developer CLI (azd) is an open-source tool that accelerates the time it takes to get started on Azure. azd provides a set of developer-friendly commands that map to key stages in a workflow (code, build, deploy, monitor).</p>
+<p>Converting a project to use the AZD commands is a matter following a few conventions and adding a few files to the project.</p>
+<h2 id="folder-conventions">Folder Conventions<a class="headerlink" href="#folder-conventions" title="Permanent link">#</a></h2>
+<ul>
+<li>
+<p><strong>Infra Folder:</strong> The main.bicep file is the key to this process and it must reside in a folder named "infra".</p>
+</li>
+<li>
+<p><strong>Src Folder:</strong> Source code for the project should reside in a folder named "src".</p>
+</li>
+</ul>
+<h2 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">#</a></h2>
+<p>There are four key files that drive the AZD process:
+| Folder  | File                     | Description               |
+| ------- | ------------------------ | ------------------------- |
+| /       | azure.yaml               | Build Process Definition  |
+| /infra/ | main.bicep               | Azure Resource Definition |
+| /infra/ | main.parameters.json     | Resource Parameters       |
+| /github/workflows/ | azure-dev.yml | GitHub Action to Build and Deploy |</p>
+<hr />
+<h3 id="azureyaml">/azure.yaml<a class="headerlink" href="#azureyaml" title="Permanent link">#</a></h3>
+<p>The azure.yaml file defines where to find the infrastructure files, and what to build. It is possible to override the location and name of the main.bicep file name by overriding the infra.path and infra.module values.</p>
+<p>This example shows how to build and deploy a C# Azure Function.</p>
+<pre><code class="language-bash">name: &lt;projectName&gt;
+infra:
+    provider: bicep
+    path: infra
+    module: main
+pipeline:
+    provider: github
+services:
+  function:
+    project: src/&lt;your CSProj Name&gt;/
+    language: csharp
+    host: function
+</code></pre>
+<h3 id="githubworkflowsazure-devyml">.github/workflows/azure-dev.yml<a class="headerlink" href="#githubworkflowsazure-devyml" title="Permanent link">#</a></h3>
+<p>The azure-dev.yml file creates the GitHub action that will build the Azure resources and deploy the application based on the user inputs.</p>
+<pre><code class="language-bash">on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/azure-dev-cli-apps:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Log in with Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Azure Dev Provision
+        run: azd provision --no-prompt
+        env:
+          AZURE_ENV_NAME: ${{ secrets.AZURE_ENV_NAME }}
+          AZURE_LOCATION: ${{ secrets.AZURE_LOCATION }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Azure Dev Deploy
+        run: azd deploy --no-prompt
+        env:
+          AZURE_ENV_NAME: ${{ secrets.AZURE_ENV_NAME }}
+          AZURE_LOCATION: ${{ secrets.AZURE_LOCATION }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+</code></pre>
+<h3 id="inframainbicep">/infra/main.bicep<a class="headerlink" href="#inframainbicep" title="Permanent link">#</a></h3>
+<p>The main.bicep file is the file that defines what is deployed to Azure, and it can be modified to do is required for the project. However, the input parameters are limited to name, location, and principal.</p>
+<pre><code class="language-bash">targetScope = 'subscription'
+
+param name string
+param location string
+param principalId string = ''
+
+var resourceToken = toLower(uniqueString(subscription().id, name))
+
+resource resourceGroup 'Microsoft.Resources/resourceGroups@2020-06-01' = {
+    name: 'rg-${name}'
+    location: location
+}
+module resources './Bicep/main.bicep' = {
+    name: 'resources-${resourceToken}'
+    scope: resourceGroup
+    params: {
+        name: name
+        location: location
+        principalId: principalId
+        resourceToken: resourceToken
+    }
+}
+</code></pre>
+<h3 id="inframainparametersjson">/infra/main.parameters.json<a class="headerlink" href="#inframainparametersjson" title="Permanent link">#</a></h3>
+<p>The main.parameters.json file defines the three required input parameters that are passed in by the AZD command to the main.bicep file.</p>
+<pre><code class="language-bash">{
+    &quot;$schema&quot;: &quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#&quot;,
+    &quot;contentVersion&quot;: &quot;1.0.0.0&quot;,
+    &quot;parameters&quot;: {
+        &quot;name&quot;: {
+        &quot;value&quot;: &quot;${AZURE_ENV_NAME}&quot;
+        },
+        &quot;location&quot;: {
+        &quot;value&quot;: &quot;${AZURE_LOCATION}&quot;
+        },
+        &quot;principalId&quot;: {
+        &quot;value&quot;: &quot;${AZURE_PRINCIPAL_ID}&quot;
+        }
+    }
+}
+</code></pre>
+<h2 id="setup-complete">Setup Complete<a class="headerlink" href="#setup-complete" title="Permanent link">#</a></h2>
+<p>Once you have these files and folders in place, the AZD commands should begin to work properly. There are many other options that can be explored, this is just one example that works for an Azure Function.</p>
+<hr />
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">#</a></h2>
+<p><a href="https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/make-azd-compatible?pivots=azd-create">Make your project compatible with Azure Developer CLI</a></p>
+<p><a href="https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/">Azure Developer CLI Reference</a></p>
+<p><a href="https://devblogs.microsoft.com/azure-sdk/introducing-the-azure-developer-cli-a-faster-way-to-build-apps-for-the-cloud/">Introducing the Azure Developer CLI - Azure SDK Blog</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../AzdDeploy/" class="btn btn-neutral float-left" title="Deploying with 'azd' (Azure Developer Command)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ReadAppInsightsLogFiles/" class="btn btn-neutral float-right" title="Querying Logs in Application Insights">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../AzdDeploy/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ReadAppInsightsLogFiles/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

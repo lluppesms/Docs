@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Lyle Luppes" /><link rel="canonical" href="https://lluppesms.github.io/Docs/AzdDeploy/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Using the Azure Developer Command - Lyle's Docs</title>
+    <title>Deploying with 'azd' (Azure Developer Command) - Lyle's Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -13,7 +13,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Using the Azure Developer Command";
+        var mkdocs_page_name = "Deploying with \u0027azd\u0027 (Azure Developer Command)";
         var mkdocs_page_input_path = "AzdDeploy.md";
         var mkdocs_page_url = "/Docs/AzdDeploy/";
       </script>
@@ -46,8 +46,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Useful Docs</span></p>
-              <ul class="current">
+              <p class="caption"><span class="caption-text">Azure DevOps Setup</span></p>
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../CreateServiceConnections/">Create Azure DevOps Service Connections</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../CreateDevOpsEnvironments/">Create Azure DevOps Environments</a>
@@ -56,7 +56,10 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../CreateNewPipeline/">Create Azure DevOps Pipelines</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Using the Azure Developer Command</a>
+              </ul>
+              <p class="caption"><span class="caption-text">Azure Developer Command (azd)</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Deploying with 'azd' (Azure Developer Command)</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a>
     </li>
@@ -66,10 +69,19 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#command-line">Command Line</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-input">Example Input</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-output">Example Output</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a>
     </li>
     </ul>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../AzdCompatibility/">Making Your Project 'azd' Compatible</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Application Insights</span></p>
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../ReadAppInsightsLogFiles/">Querying Logs in Application Insights</a>
                   </li>
               </ul>
@@ -87,8 +99,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Useful Docs &raquo;</li>
-      <li>Using the Azure Developer Command</li>
+          <li>Azure Developer Command (azd) &raquo;</li>
+      <li>Deploying with 'azd' (Azure Developer Command)</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -108,8 +120,8 @@
 </ul>
 <p>Typically a developer with either do the up command to do everything at once, or do the provision and deploy commands separately.</p>
 <h2 id="environment-names">Environment Names<a class="headerlink" href="#environment-names" title="Permanent link">#</a></h2>
-<p>Note: When this command is run for the first time, a prompt will ask for the Azure Subscription to use and the "Environment Name". Choose the "Environment Name" carefully, as it will be used as the basis to name all of the resources, so it must be unique.</p>
-<pre><code>Side Note: Personally, I like to use a format like &lt;myInitials&gt;-&lt;appName&gt; as the format for Environment.
+<p>Note: When this command is run for the first time, a prompt will ask for the the "Environment Name", the Azure Subscription to use and the Azure Region to deploy to. Choose the "Environment Name" carefully, as it will be used as the basis to name all of the resources, so it must be unique.</p>
+<pre><code>Note: Personally, I like to use a format like &lt;myInitials&gt;-&lt;appName&gt; as the format for Environment Name.
 
 For example, if Environment Name is equal to:
   lll-function-demo
@@ -126,6 +138,10 @@ AZD will create a Azure resources with these names:
 <p>These commands can also be run on the command line, like this:</p>
 <pre><code class="language-bash">&gt; azd up
 </code></pre>
+<h2 id="example-input">Example Input<a class="headerlink" href="#example-input" title="Permanent link">#</a></h2>
+<p><img alt="VSC Commands" src="/Docs/assets/images/AZD_Prompts.png" /></p>
+<h2 id="example-output">Example Output<a class="headerlink" href="#example-output" title="Permanent link">#</a></h2>
+<p><img alt="VSC Commands" src="/Docs/assets/images/AZD_Result.png" /></p>
 <hr />
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">#</a></h2>
 <p><a href="https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/">Azure Developer CLI Reference</a></p>
@@ -136,7 +152,7 @@ AZD will create a Azure resources with these names:
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../CreateNewPipeline/" class="btn btn-neutral float-left" title="Create Azure DevOps Pipelines"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ReadAppInsightsLogFiles/" class="btn btn-neutral float-right" title="Querying Logs in Application Insights">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../AzdCompatibility/" class="btn btn-neutral float-right" title="Making Your Project 'azd' Compatible">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -162,7 +178,7 @@ AZD will create a Azure resources with these names:
       <span><a href="../CreateNewPipeline/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../ReadAppInsightsLogFiles/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../AzdCompatibility/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
