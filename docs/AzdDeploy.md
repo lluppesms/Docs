@@ -14,9 +14,9 @@ Typically a developer with either do the up command to do everything at once, or
 
 ## Environment Names
 
-Note: When this command is run for the first time, a prompt will ask for the Azure Subscription to use and the "Environment Name". Choose the "Environment Name" carefully, as it will be used as the basis to name all of the resources, so it must be unique.
+Note: When this command is run for the first time, a prompt will ask for the the "Environment Name", the Azure Subscription to use and the Azure Region to deploy to. Choose the "Environment Name" carefully, as it will be used as the basis to name all of the resources, so it must be unique.
 
-    Side Note: Personally, I like to use a format like <myInitials>-<appName> as the format for Environment.
+    Note: Personally, I like to use a format like <myInitials>-<appName> as the format for Environment Name.
 
     For example, if Environment Name is equal to:
       lll-function-demo
@@ -39,6 +39,14 @@ These commands can also be run on the command line, like this:
 ``` bash
 > azd up
 ```
+
+## Example Input
+
+![VSC Commands](/Docs/assets/images/AZD_Prompts.png)
+
+## Example Output
+
+![VSC Commands](/Docs/assets/images/AZD_Result.png)
 
 ---
 
