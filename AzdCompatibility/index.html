@@ -126,13 +126,38 @@
 </li>
 </ul>
 <h2 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">#</a></h2>
-<p>There are four key files that drive the AZD process:
-| Folder  | File                     | Description               |
-| ------- | ------------------------ | ------------------------- |
-| /       | azure.yaml               | Build Process Definition  |
-| /infra/ | main.bicep               | Azure Resource Definition |
-| /infra/ | main.parameters.json     | Resource Parameters       |
-| /github/workflows/ | azure-dev.yml | GitHub Action to Build and Deploy |</p>
+<p>There are four key files that drive the AZD process:</p>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/</td>
+<td>azure.yaml</td>
+<td>Build Process Definition</td>
+</tr>
+<tr>
+<td>/infra/</td>
+<td>main.bicep</td>
+<td>Azure Resource Definition</td>
+</tr>
+<tr>
+<td>/infra/</td>
+<td>main.parameters.json</td>
+<td>Resource Parameters</td>
+</tr>
+<tr>
+<td>/github/workflows/</td>
+<td>azure-dev.yml</td>
+<td>GitHub Action to Build and Deploy</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h3 id="azureyaml">/azure.yaml<a class="headerlink" href="#azureyaml" title="Permanent link">#</a></h3>
 <p>The azure.yaml file defines where to find the infrastructure files, and what to build. It is possible to override the location and name of the main.bicep file name by overriding the infra.path and infra.module values.</p>
