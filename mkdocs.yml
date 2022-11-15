@@ -3,11 +3,13 @@
 # To install mkdocs on Windows:
 #   python -m pip install mkdocs
 # To run locally: 
-#    python -m mkdocs serve
-#    See: https://www.mkdocs.org/getting-started/
+#   python -m mkdocs serve
+#   See: https://www.mkdocs.org/getting-started/
 # To create a static docs site that will automatically be deployed:
-#    python -m mkdocs gh-deploy
-#    See: https://www.mkdocs.org/user-guide/deploying-your-docs/
+#   python -m mkdocs gh-deploy
+#   See: https://www.mkdocs.org/user-guide/deploying-your-docs/
+#   This repo is set to deploy to https://lluppesms.github.io/Docs
+#   I've set up a CNAME alias of http://docs.luppes.com
 
 site_name: Lyle's Docs
 site_url: https://lluppesms.github.io/Docs
@@ -45,6 +47,7 @@ nav:
     - Create Azure DevOps Environments: CreateDevOpsEnvironments.md
     - Create Azure DevOps Variable Groups: CreateDevOpsVariableGroups.md
     - Create Azure DevOps Pipelines: CreateNewPipeline.md
+    - Using the Azure Developer Command: AzdDeploy.md
     - Querying Logs in Application Insights: ReadAppInsightsLogFiles.md
 
 markdown_extensions:
