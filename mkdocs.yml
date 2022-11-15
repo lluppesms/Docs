@@ -9,7 +9,9 @@
 #   python -m mkdocs gh-deploy
 #   See: https://www.mkdocs.org/user-guide/deploying-your-docs/
 #   This repo is set to deploy to https://lluppesms.github.io/Docs
-#   I've set up a CNAME alias of http://docs.luppes.com
+# I've set up a CNAME alias of http://docs.luppes.com
+#   FYI - To make that work with the gh-deploy command, you have to include
+#   a CNAME file in the docs folder, otherwise it removes the CNAME.
 
 site_name: Lyle's Docs
 site_url: https://lluppesms.github.io/Docs
