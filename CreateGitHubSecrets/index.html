@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Lyle Luppes" /><link rel="canonical" href="https://lluppesms.github.io/Docs/CreateNewPipeline/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Lyle Luppes" /><link rel="canonical" href="https://lluppesms.github.io/Docs/CreateGitHubSecrets/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Create Azure DevOps Pipelines - Lyle's Reference Library</title>
+    <title>Creating GitHub Repository Secrets - Lyle's Reference Library</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -13,9 +13,9 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Create Azure DevOps Pipelines";
-        var mkdocs_page_input_path = "CreateNewPipeline.md";
-        var mkdocs_page_url = "/Docs/CreateNewPipeline/";
+        var mkdocs_page_name = "Creating GitHub Repository Secrets";
+        var mkdocs_page_input_path = "CreateGitHubSecrets.md";
+        var mkdocs_page_url = "/Docs/CreateGitHubSecrets/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -47,16 +47,14 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Azure DevOps Setup</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../CreateServiceConnections/">Create Azure DevOps Service Connections</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../CreateDevOpsEnvironments/">Create Azure DevOps Environments</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../CreateDevOpsVariableGroups/">Create Azure DevOps Variable Groups</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Create Azure DevOps Pipelines</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../CreateNewPipeline/">Create Azure DevOps Pipelines</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Azure Developer Command (azd)</span></p>
@@ -67,8 +65,16 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">GitHub Workflows</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../CreateGitHubSecrets/">Creating GitHub Repository Secrets</a>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Creating GitHub Repository Secrets</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#azure-credentials">Azure Credentials</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bicep-configuration-values">Bicep Configuration Values</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Application Insights</span></p>
@@ -90,8 +96,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Azure DevOps Setup &raquo;</li>
-      <li>Create Azure DevOps Pipelines</li>
+          <li>GitHub Workflows &raquo;</li>
+      <li>Creating GitHub Repository Secrets</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -100,37 +106,66 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="create-azure-devops-pipelines">Create Azure DevOps Pipelines<a class="headerlink" href="#create-azure-devops-pipelines" title="Permanent link">#</a></h1>
-<p>To create an Azure DevOps pipeline from an existing YML file in a GitHub repository, follow these steps.</p>
+                <h1 id="set-up-github-secrets">Set up GitHub Secrets<a class="headerlink" href="#set-up-github-secrets" title="Permanent link">#</a></h1>
+<p>The GitHub workflows in a project require several secrets set at the repository level.</p>
 <hr />
-<p><strong>Step 1:</strong> Click New pipeline from the Pipeline section of the Azure DevOps project</p>
-<p><img alt="Step 1" src="../assets/images/NewPipeline-1.jpg" /></p>
-<p><strong>Step 2:</strong> Select source as GitHub:</p>
-<p><img alt="Step 2" src="../assets/images/NewPipeline-2.jpg" /></p>
-<p><strong>Step 3:</strong> Select the GitHub repository</p>
-<p><img alt="Step 3" src="../assets/images/NewPipeline-3.jpg" /></p>
-<p><strong>Step 4:</strong> Select Existing Pipelines YAML file</p>
-<p><img alt="Step 4" src="../assets/images/NewPipeline-4.jpg" /></p>
-<p><strong>Step 5:</strong> Select the desired pipeline</p>
-<p><img alt="Step 5" src="../assets/images/NewPipeline-5.jpg" /></p>
-<p><strong>Step 6:</strong> When the pipeline source is shown, select More Actions and Save the file. Don't worry about details yet, there are still more steps before it's ready to Run.</p>
-<p><img alt="Step 6" src="../assets/images/NewPipeline-6.jpg" /></p>
-<p><strong>Step 7:</strong> Once the new pipeline page is shown, click the Edit button.</p>
-<p><img alt="Step 7" src="../assets/images/NewPipeline-7.jpg" /></p>
-<p><strong>Step 8:</strong> This may not seem intuitive, but the detailed editor is hidden behind the "Triggers" option of the pipeline editor, so select that.</p>
-<p><img alt="Step 8" src="../assets/images/NewPipeline-8.jpg" /></p>
-<p><strong>Step 9:</strong> On the detailed pipeline editor, select Variables -&gt; Variable Groups, and link the variable groups that are needed for this pipeline.</p>
-<p><img alt="Step 9" src="../assets/images/NewPipeline-9.jpg" /></p>
-<p><strong>Step 10:</strong> More than one variable group can be added to a pipeline.</p>
-<p><img alt="Step 10" src="../assets/images/NewPipeline-10.jpg" /></p>
-<p><strong>Step 11:</strong> Switch to the YAML tab and update the name of the pipeline to be what is desired. Now the "Save and queue" is ready, and the pipeline can be run.</p>
-<p><img alt="Step 11" src="../assets/images/NewPipeline-11.jpg" /></p>
+<h2 id="azure-credentials">Azure Credentials<a class="headerlink" href="#azure-credentials" title="Permanent link">#</a></h2>
+<p>You need to set up the Azure Credentials secret in the GitHub Secrets at the Repository level before you do anything else.</p>
+<p>See https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-github-actions for more info.</p>
+<p>It should look something like this:</p>
+<p>AZURE_CREDENTIALS:</p>
+<pre><code class="language-bash">{
+  &quot;clientId&quot;: &quot;&lt;GUID&gt;&quot;, 
+  &quot;clientSecret&quot;: &quot;&lt;GUID&gt;&quot;, 
+  &quot;subscriptionId&quot;: &quot;&lt;GUID&gt;&quot;, 
+  &quot;tenantId&quot;: &quot;&lt;GUID&gt;&quot;
+}
+</code></pre>
+<hr />
+<h2 id="bicep-configuration-values">Bicep Configuration Values<a class="headerlink" href="#bicep-configuration-values" title="Permanent link">#</a></h2>
+<p>These secrets are used by the Bicep templates to configure the resource names that are deployed.<br />
+Make sure the App_Name variable is unique to your deploy. It will be used as the basis for the function name and for all the other Azure resources, which must be globally unique.
+To create these additional secrets, customize and run this command:</p>
+<p>Required Values:</p>
+<pre><code class="language-bash">gh secret set APP_NAME -b '&lt;yourInitials&gt;-&lt;appName&gt;'
+gh secret set AZURE_SUBSCRIPTION_ID -b '&lt;yourAzureSubscriptionId&gt;'
+gh secret set KEYVAULT_OWNER_USERID -b '&lt;owner1SID&gt;'
+</code></pre>
+<p>Optional Values: (such as if Twilio notifications are required!)</p>
+<pre><code class="language-bash">gh secret set TWILIOACCOUNTSID -b '&lt;twilioAccountSid&gt;'
+gh secret set TWILIOAUTHTOKEN -b '&lt;twilioAuthToken&gt;'
+gh secret set TWILIOPHONENUMBER -b '&lt;twilioPhoneNumber&gt;'
+</code></pre>
+<!-- 
+---
+Note: I thought this was needed, but the app seems to work fine with it...!
+## Azure Application Publishing Credentials
+
+Before you run the application build/deploy workflows, the AZURE_FUNCTION_PUBLISH_PROFILE needs to have initialized for EACH ENVIRONMENT you deploy to.  The value that can be found by going in the portal to the Function App -> Deployment Center -> Manage Publish Profile -> Download.  It will look like this:
+
+AZURE_FUNCTION_PUBLISH_PROFILE:
+
+``` bash
+<publishData>
+  <publishProfile profileName="your-function - Web Deploy" 
+     publishMethod="MSDeploy" ...></publishProfile>
+  <publishProfile profileName="your-function - FTP" 
+     publishMethod="FTP" ...></publishProfile>
+  <publishProfile profileName="your-function - Zip Deploy" 
+     publishMethod="ZipDeploy" ...></publishProfile>
+</publishData>
+``` -->
+
+<hr />
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<p><a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-github-actions">Deploying ARM Templates with GitHub Actions</a></p>
+<p><a href="https://cli.github.com/manual/gh_secret_set">GitHub Secrets CLI</a></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../CreateDevOpsVariableGroups/" class="btn btn-neutral float-left" title="Create Azure DevOps Variable Groups"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../AzdDeploy/" class="btn btn-neutral float-right" title="Deploying with 'azd' (Azure Developer Command)">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../AzdCompatibility/" class="btn btn-neutral float-left" title="Making Your Project 'azd' Compatible"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ReadAppInsightsLogFiles/" class="btn btn-neutral float-right" title="Querying Logs in Application Insights">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -153,10 +188,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../CreateDevOpsVariableGroups/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../AzdCompatibility/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../AzdDeploy/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../ReadAppInsightsLogFiles/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

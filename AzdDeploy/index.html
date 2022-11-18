@@ -69,15 +69,22 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#command-line">Command Line</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#example-input">Example Input</a>
+    <li class="toctree-l2"><a class="reference internal" href="#example-command-execution">Example Command Execution</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#resources-created">Resources Created</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#example-of-resources-created">Example of Resources Created</a>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a>
     </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../AzdCompatibility/">Making Your Project 'azd' Compatible</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">GitHub Workflows</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../CreateGitHubSecrets/">Creating GitHub Repository Secrets</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Application Insights</span></p>
@@ -123,11 +130,10 @@
 <p>Typically a developer with either do the up command to do everything at once, or do the provision and deploy commands separately.</p>
 <hr />
 <h2 id="environment-names">Environment Names<a class="headerlink" href="#environment-names" title="Permanent link">#</a></h2>
-<p>When this command is run for the first time, a prompt will ask for the the "Environment Name", the Azure Subscription to use and the Azure Region to deploy to. Choose the "Environment Name" carefully, as it will be used as the basis to name all of the resources, so it must be unique.</p>
-<pre><code>Note: I like to use a naming style like [myInitials]-[appName] as the format for Environment Name.
-</code></pre>
+<p>When this command is run for the first time, a prompt will ask for the the "Environment Name", the Azure Subscription to use and the Azure Region to deploy to. NOTE: this is not an environment code like ["dev"/"qa"/"prod"]!  </p>
+<p>Choose the "Environment Name" carefully, as it will be used as the basis to name all of the resources, so it must be unique. Use a naming convention like [yourInitials]-[appName] as the format for Environment Name.</p>
 <p>For example, if Environment Name is equal to:</p>
-<pre><code class="language-bash">lll-function-demo
+<pre><code class="language-bash">xxx-function-demo
 </code></pre>
 <p>AZD will create a Azure resources with these names:</p>
 <table>
@@ -135,32 +141,35 @@
 <tr>
 <th>Azure Resource</th>
 <th>Name</th>
+<th>Uniqueness</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Resource Group</td>
-<td>rg-lll-function-demo</td>
+<td>rg-xxx-function-demo</td>
+<td>in a subscription</td>
 </tr>
 <tr>
 <td>Azure Function</td>
-<td>lll-function-demofunction</td>
+<td>xxx-function-demofunction</td>
+<td>global</td>
 </tr>
 </tbody>
 </table>
 <p>Storage accounts and other resources will be named in a similarly fashion.</p>
 <hr />
 <h2 id="visual-studio-code">Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permanent link">#</a></h2>
-<p>There is a Azure Developer CLI extension available in Visual Studio Code. If that is installed, it is easy to pop up the command window like this:</p>
+<p>There is a Azure Developer CLI <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-dev">extension</a> available in Visual Studio Code. If that is installed, it is easy to pop up the command window like this:</p>
 <p><img alt="VSC Commands" src="../assets/images/AZD_Commands.png" /></p>
 <hr />
 <h2 id="command-line">Command Line<a class="headerlink" href="#command-line" title="Permanent link">#</a></h2>
 <p>These commands can also be run on the command line, like this:</p>
 <pre><code class="language-bash">&gt; azd up
 </code></pre>
-<h2 id="example-input">Example Input<a class="headerlink" href="#example-input" title="Permanent link">#</a></h2>
+<h2 id="example-command-execution">Example Command Execution<a class="headerlink" href="#example-command-execution" title="Permanent link">#</a></h2>
 <p><img alt="VSC Commands" src="../assets/images/AZD_Prompts.png" /></p>
-<h2 id="example-of-resources-created">Example of Resources Created<a class="headerlink" href="#example-of-resources-created" title="Permanent link">#</a></h2>
+<h3 id="resources-created">Resources Created<a class="headerlink" href="#resources-created" title="Permanent link">#</a></h3>
 <p><img alt="VSC Commands" src="../assets/images/AZD_Result.png" /></p>
 <hr />
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">#</a></h2>
