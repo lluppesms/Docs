@@ -24,11 +24,11 @@ To create an Azure DevOps pipeline from an existing YML file in a GitHub reposit
 
 ![Step 5](assets/images/NewPipeline-5.jpg)
 
-**Step 6:** When the pipeline source is shown, select More Actions and Save the file. Don't worry about details yet, there are still more steps before it's ready to Run.
+**Step 6:** For most cases, when the pipeline source is shown, you can just click Run and start your pipeline.  However, if you need to adjust some settings, then select More Actions and Save the file.
 
 ![Step 6](assets/images/NewPipeline-6.jpg)
 
-**Step 7:** Once the new pipeline page is shown, click the Edit button.
+**Step 7:** If you need to adjust some setting, once the new pipeline page is shown, click the Edit button.
 
 ![Step 7](assets/images/NewPipeline-7.jpg)
 
